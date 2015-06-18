@@ -1,0 +1,17 @@
+<ion-view view-title="정류장">
+  <ion-content>
+    <div class="card" ng-show="stations.length == 0">
+      <div class="item item-text-wrap">
+        정류장 정보가 없습니다.
+      </div>
+    </div>
+    <ion-list ng-show="stations.length > 0">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="station in stations" type="item-text-wrap" href="#/tab/stations/{{station.id}}">
+        <img ng-src="{{station.imgUrl}}">
+        <h2>{{station.name}}</h2>
+        <p>{{station.description}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
