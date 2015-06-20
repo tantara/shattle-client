@@ -1,12 +1,9 @@
 <ion-view view-title="주변정류장">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="station in stations" type="item-text-wrap" href="#/tab/stations/{{station.id}}">
-        <img ng-src="{{station.imgUrl}}">
-        <h2>{{station.name}}</h2>
-        <p>{{station.description}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+  <ion-content scroll="false">
+    <map on-create="mapCreated(map)"></map>
   </ion-content>
+
+  <ion-footer-bar class="bar-stable">
+    <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+  </ion-footer-bar>
 </ion-view>

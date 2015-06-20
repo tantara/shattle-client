@@ -1,8 +1,61 @@
-<ion-view view-title="{{bus.name}}">
+<ion-view view-title="노선정보">
   <ion-content class="padding">
-    <img ng-src="{{bus.imgUrl}}" style="width: 64px; height: 64px">
-    <p>
-      {{bus.description}}
-    </p>
+    <div class="list item-icon-right">
+      <h4 class="{{bus.imgType}}-text">{{bus.name}}</h4>
+      <p>{{bus.description}}</p>
+    </div>
+
+    <div class="button-bar bar-light">
+      <a class="button" ng-class="{'button-stable': tab==1}" ng-click="tabChanged(1)">경로</a>
+      <a class="button" ng-class="{'button-stable': tab==2}" ng-click="tabChanged(2)">정보</a>
+    </div>
+
+    <ion-list ng-show="tab == 1">
+      <ion-item type="item-text-wrap" class="item-icon-right" ng-show="bus.stations.length > 0">
+        <h2>*실시간 위치는 현재 지원하지 않습니다.</h2>
+      </ion-item>
+      <ion-item type="item-text-wrap" class="item-icon-right" ng-show="bus.stations.length == 0">
+        <h2>*경로 정보가 부족합니다.</h2>
+      </ion-item>
+      <ion-item ng-repeat="station in bus.stations" type="item-text-wrap" class="item-icon-right">
+        <h2>{{station.name}}</h2>
+        <p>{{station.description}}</p>
+        <i class="icon line">&nbsp;</i>
+      </ion-item>
+    </ion-list>
+
+    <ion-list ng-show="tab == 2">
+      <ion-item class="item-divider">
+        기점
+      </ion-item>
+      <ion-item type="item-text-wrap">
+        {{bus.info.dep}}
+      </ion-item>
+
+      <ion-item class="item-divider">
+        종점
+      </ion-item>
+      <ion-item type="item-text-wrap">
+        {{bus.info.dest}}
+      </ion-item>
+
+      <ion-item class="item-divider">
+        배차 간격
+      </ion-item>
+      <ion-item type="item-text-wrap">
+        {{bus.info.interval}}
+      </ion-item>
+
+      <ion-item class="item-divider">
+        운행 시간
+      </ion-item>
+      <ion-item type="item-text-wrap">
+        {{bus.info.times}}
+      </ion-item>
+    </ion-list>
   </ion-content>
+
+  <ion-footer-bar class="bar-stable">
+    <a class="button button-icon icon" ng-class="{'ion-android-star-outline': !isBookmarked, 'ion-android-star': isBookmarked, 'pressed':isBookmarked}" ng-click="bookmark()"></a>
+  </ion-footer-bar>
 </ion-view>

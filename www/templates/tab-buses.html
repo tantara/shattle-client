@@ -1,8 +1,14 @@
 <ion-view view-title="노선번호">
   <ion-content>
+    <div class="card" ng-show="buses.length == 0">
+      <div class="item item-text-wrap">
+        즐겨찾기 정보가 없습니다.
+      </div>
+    </div>
+
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
-        <img ng-src="{{bus.imgUrl}}">
+        <span class="item-image bicon {{bus.imgType}}"></span>
         <h2>{{bus.name}}</h2>
         <p>{{bus.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>

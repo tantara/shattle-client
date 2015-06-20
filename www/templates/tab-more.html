@@ -1,9 +1,21 @@
 <ion-view view-title="더보기">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+    <ion-list class="list-inset">
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" href="http://snubus.kr/notice" target="_blank">
+        <h2>새로운 소식</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="list-inset">
+      <a class="item" href="#/tab/info">
+        정보
+        <span class="item-note">0.9.0</span>
+      </a>
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/help">
+        <h2>도움말</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,14 +39,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each tab has its own nav history stack:
   
   .state('tab.bookmark', {
-    url: '/bookmark',
-    views: {
-      'tab-bookmark': {
-        templateUrl: 'templates/tab-bookmark.html',
-        controller: 'BookmarkCtrl'
+      url: '/bookmark',
+      cache: false,
+      views: {
+        'tab-bookmark': {
+          templateUrl: 'templates/tab-bookmark.html',
+          controller: 'BookmarkCtrl'
+        }
       }
-    }
-  })
+    })
+    .state('tab.bookmark-detail', {
+      url: '/bookmark/:busId',
+      cache: false,
+      views: {
+        'tab-bookmark': {
+          templateUrl: 'templates/bus-detail.html',
+          controller: 'BusDetailCtrl'
+        }
+      }
+    })
 
   .state('tab.buses', {
       url: '/buses',
@@ -59,8 +70,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
     .state('tab.bus-detail', {
       url: '/buses/:busId',
+      cache: false,
       views: {
-        'tab-bookmark': {
+        'tab-buses': {
           templateUrl: 'templates/bus-detail.html',
           controller: 'BusDetailCtrl'
         }
@@ -92,6 +104,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-more': {
         templateUrl: 'templates/tab-more.html',
+        controller: 'MoreCtrl'
+      }
+    }
+  })
+  .state('tab.info', {
+    url: '/info',
+    views: {
+      'tab-more': {
+        templateUrl: 'templates/info.html',
+        controller: 'MoreCtrl'
+      }
+    }
+  })
+  .state('tab.help', {
+    url: '/help',
+    views: {
+      'tab-more': {
+        templateUrl: 'templates/help.html',
         controller: 'MoreCtrl'
       }
     }

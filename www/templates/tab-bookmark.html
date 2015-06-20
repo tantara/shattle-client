@@ -1,15 +1,18 @@
 <ion-view view-title="즐겨찾기">
   <ion-content>
+    <div class="card" ng-show="buses.length == 0">
+      <div class="item item-text-wrap">
+        즐겨찾기 정보가 없습니다.
+      </div>
+    </div>
+
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
-        <img ng-src="{{bus.imgUrl}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses" type="item-text-wrap" href="#/tab/bookmark/{{bus.id}}">
+        <span class="item-image bicon {{bus.imgType}}"></span>
         <h2>{{bus.name}}</h2>
         <p>{{bus.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
-        <ion-option-button class="button-assertive" ng-click="remove(bus)">
-          Delete
-        </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>

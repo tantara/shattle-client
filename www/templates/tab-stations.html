@@ -1,10 +1,16 @@
 <ion-view view-title="정류장">
   <ion-content>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="정류장 이름 혹은 번호를 입력하세요">
+    </label>
+
     <div class="card" ng-show="stations.length == 0">
       <div class="item item-text-wrap">
         정류장 정보가 없습니다.
       </div>
     </div>
+
     <ion-list ng-show="stations.length > 0">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="station in stations" type="item-text-wrap" href="#/tab/stations/{{station.id}}">
         <img ng-src="{{station.imgUrl}}">
