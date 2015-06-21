@@ -1,0 +1,17 @@
+<ion-view view-title="새로운 소식">
+  <ion-content>
+    <div class="list card" ng-repeat="notice in notices">
+
+      <div class="item item-avatar">
+        <img ng-src="{{notice.profile_url}}">
+        <h2>{{notice.user_name}}</h2>
+        <p>{{notice.created_at}}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{notice.content_url}}">
+        <p>{{notice.content}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

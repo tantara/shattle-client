@@ -1,5 +1,11 @@
 <ion-view view-title="즐겨찾기">
   <ion-content>
+    <div class="row">
+      <div class="col">
+        <div class="fb-like" data-href="http://shattle.kr" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+
     <div class="card" ng-show="buses.length == 0">
       <div class="item item-text-wrap">
         즐겨찾기 정보가 없습니다.
@@ -8,7 +14,7 @@
 
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses" type="item-text-wrap" href="#/tab/bookmark/{{bus.id}}">
-        <span class="item-image bicon {{bus.imgType}}"></span>
+        <span class="item-image bicon {{bus.busType}}"></span>
         <h2>{{bus.name}}</h2>
         <p>{{bus.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>

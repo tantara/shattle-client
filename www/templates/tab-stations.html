@@ -1,9 +1,11 @@
 <ion-view view-title="정류장">
   <ion-content>
-    <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="정류장 이름 혹은 번호를 입력하세요">
-    </label>
+    <form ng-submit="submit()">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="정류장 이름 혹은 번호를 입력하세요" ng-model="search.query" ng-minlength="2" ng-trim="true" ng-required="true">
+      </label>
+    </form>
 
     <div class="card" ng-show="stations.length == 0">
       <div class="item item-text-wrap">
@@ -13,7 +15,7 @@
 
     <ion-list ng-show="stations.length > 0">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="station in stations" type="item-text-wrap" href="#/tab/stations/{{station.id}}">
-        <img ng-src="{{station.imgUrl}}">
+        <span class="item-image bicon bus"></span>
         <h2>{{station.name}}</h2>
         <p>{{station.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>

@@ -16,7 +16,6 @@ angular.module('starter.directives', [])
         var map = new google.maps.Map($element[0], mapOptions);
 
  var stations = [
-      
         
         ['301동 공학관', 37.451325, 126.952697, 1, "/resources/images/map/10A.png", "1001", "10A"]
       
@@ -196,7 +195,7 @@ angular.module('starter.directives', [])
             //attachSecretMessage(marker,i);
           } 
         }
-        setMarkers(map, stations)
+        //setMarkers(map, stations)
 
         $scope.onCreate({map: map});
 

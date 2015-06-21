@@ -18,6 +18,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+    if(navigator.appVersion.indexOf("MSIE 9.")!=-1
+      || navigator.appVersion.indexOf("MSIE 8.")!=-1) {
+      alert('최신 버전(IE11)의 인터넷 익스플로러를 설치해주세요. 하위 버전에서는 정상적인 이용이 어렵습니다.');
+    }
   });
 })
 
@@ -28,7 +32,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: "/tab",
@@ -80,14 +83,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     })
 
   .state('tab.stations', {
-    url: '/stations',
-    views: {
-      'tab-stations': {
-        templateUrl: 'templates/tab-stations.html',
-        controller: 'StationsCtrl'
+      url: '/stations',
+      views: {
+        'tab-stations': {
+          templateUrl: 'templates/tab-stations.html',
+          controller: 'StationsCtrl'
+        }
       }
-    }
-  })
+    })
+    .state('tab.station-detail', {
+      url: '/stations/:stationId',
+      cache: false,
+      views: {
+        'tab-stations': {
+          templateUrl: 'templates/station-detail.html',
+          controller: 'StationDetailCtrl'
+        }
+      }
+    })
 
   .state('tab.near', {
     url: '/near',
@@ -122,6 +135,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-more': {
         templateUrl: 'templates/help.html',
+        controller: 'MoreCtrl'
+      }
+    }
+  })
+  .state('tab.notice', {
+    url: '/notice',
+    views: {
+      'tab-more': {
+        templateUrl: 'templates/notice.html',
         controller: 'MoreCtrl'
       }
     }

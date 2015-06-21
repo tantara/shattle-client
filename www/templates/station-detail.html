@@ -1,0 +1,18 @@
+<ion-view view-title="정류장정보">
+  <ion-content class="padding">
+    <h4 class="{{station.stationType}}-text">{{station.name}}</h4>
+    <p>{{station.description}}</p>
+
+    <ion-list>
+      <ion-item class="item-divider">
+        지나가는 버스
+      </ion-item>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in station.buses" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
+        <span class="item-image bicon {{bus.busType}}"></span>
+        <h2>{{bus.name}}</h2>
+        <p>{{bus.description}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

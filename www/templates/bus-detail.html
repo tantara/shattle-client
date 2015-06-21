@@ -1,9 +1,23 @@
+<script id="modal.html" type="text/ng-template">
+  <div class="modal">
+    <header class="bar bar-header bar-assertive">
+      <h1 class="title">경로</h1>
+      <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-android-close"></span></div>
+    </header>
+    <content has-header="true" padding="false">
+      <map on-create="mapCreated(map)" data-tap-disabled="true"></map>
+    </content>
+    <ion-footer-bar class="bar-stable">
+      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+      <span class="vertical">정류장 위치나 경로(실선) 정보가 부정확할 수 있습니다. 제보 <a href="mailto:shattle15@gmail.com">shattle15@gmail.com</a></span>
+    </ion-footer-bar>
+  </div>
+</script>
+
 <ion-view view-title="노선정보">
   <ion-content class="padding">
-    <div class="list item-icon-right">
-      <h4 class="{{bus.imgType}}-text">{{bus.name}}</h4>
-      <p>{{bus.description}}</p>
-    </div>
+    <h4 class="{{bus.busType}}-text">{{bus.name}}</h4>
+    <p>{{bus.description}}</p>
 
     <div class="button-bar bar-light">
       <a class="button" ng-class="{'button-stable': tab==1}" ng-click="tabChanged(1)">경로</a>
@@ -12,7 +26,7 @@
 
     <ion-list ng-show="tab == 1">
       <ion-item type="item-text-wrap" class="item-icon-right" ng-show="bus.stations.length > 0">
-        <h2>*실시간 위치는 현재 지원하지 않습니다.</h2>
+        <h2>*실시간 위치는 현재 지원하지 않습니다.<br/>(6월중 지원예정)</h2>
       </ion-item>
       <ion-item type="item-text-wrap" class="item-icon-right" ng-show="bus.stations.length == 0">
         <h2>*경로 정보가 부족합니다.</h2>
@@ -57,5 +71,6 @@
 
   <ion-footer-bar class="bar-stable">
     <a class="button button-icon icon" ng-class="{'ion-android-star-outline': !isBookmarked, 'ion-android-star': isBookmarked, 'pressed':isBookmarked}" ng-click="bookmark()"></a>
+    <a class="button button-icon icon ion-location" ng-click="showMap()"></a>
   </ion-footer-bar>
 </ion-view>

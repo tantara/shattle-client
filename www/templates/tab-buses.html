@@ -1,14 +1,21 @@
-<ion-view view-title="노선번호">
+<ion-view view-title="노선">
   <ion-content>
     <div class="card" ng-show="buses.length == 0">
       <div class="item item-text-wrap">
-        즐겨찾기 정보가 없습니다.
+        노선 정보가 없습니다.
       </div>
     </div>
 
+    <div class="button-bar" ng-show="buses.length > 0">
+      <a class="button button-small" ng-click="setFilterName('ss')">통학셔틀({{busCount.ss}})</a>
+      <a class="button button-small" ng-click="setFilterName('si')">교내셔틀({{busCount.si}})</a>
+      <a class="button button-small" ng-click="setFilterName('pb cg')">시내버스({{busCount.pbcg}})</a>
+      <a class="button button-small" ng-click="setFilterName('sn v')">마을/심야버스({{busCount.snv}})</a>
+    </div>
+
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
-        <span class="item-image bicon {{bus.imgType}}"></span>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses | filter:filterByType" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
+        <span class="item-image bicon {{bus.busType}}"></span>
         <h2>{{bus.name}}</h2>
         <p>{{bus.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
