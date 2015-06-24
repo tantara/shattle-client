@@ -18,7 +18,19 @@
   border-color: #ef473a;
 }
 .line {
+  background-color: #444;
+}
+.line.red {
   background-color: #ef473a;
+}
+.line.yellow {
+  background-color: #ffc900;
+}
+.line.green {
+  background-color: #33cd5f;
+}
+.line.black {
+  background-color: #444;
 }
 
 map {

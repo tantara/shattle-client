@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $location) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +22,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       || navigator.appVersion.indexOf("MSIE 8.")!=-1) {
       alert('최신 버전(IE11)의 인터넷 익스플로러를 설치해주세요. 하위 버전에서는 정상적인 이용이 어렵습니다.');
     }
+
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    ga('send', 'pageview', {'page': location.pathname + location.search  + location.hash});
   });
 })
 

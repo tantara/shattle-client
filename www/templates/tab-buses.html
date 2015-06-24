@@ -14,6 +14,9 @@
     </div>
 
     <ion-list>
+      <ion-item type="item-text-wrap" class="item-icon-right" ng-show="buses.length > 0">
+        <h2 style="white-space: normal;">현재 실시간 위치는 시내버스만 제공합니다.(셔틀버스는 6월중 제공 예정)</h2>
+      </ion-item>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="bus in buses | filter:filterByType" type="item-text-wrap" href="#/tab/buses/{{bus.id}}">
         <span class="item-image bicon {{bus.busType}}"></span>
         <h2>{{bus.name}}</h2>

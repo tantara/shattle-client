@@ -1,13 +1,17 @@
 angular.module('starter.controllers', [])
 
-.controller('BookmarkCtrl', function($scope, Buses) {
+.controller('BookmarkCtrl', function($scope, Buses, $timeout) {
 
   $scope.buses = Buses.bookmarks();
 
   // always fire
+  $scope.showHint = false;
   try{
-    FB.XFBML.parse(); 
-  }catch(ex){}
+    $timeout(function() {
+      FB.XFBML.parse(); 
+      $scope.showHint = true;
+    }, 300);
+  }catch(ex){ console.log('error'); }
 })
 
 .controller('BusesCtrl', function($scope, Buses, $http) {
@@ -59,8 +63,24 @@ angular.module('starter.controllers', [])
   $scope.bus = {};
   $http.get('http://snubus.kr/api/buses/' + $stateParams.busId).success(function(data) {
     $scope.bus = data;
+
+    for(var i = 0; i < $scope.bus.stations.length; i++) {
+      if($scope.bus.stations[i].hasBus && $scope.bus.stations[i].speedType != "black") {
+        $scope.running = "운행중";
+        break;
+      }
+    }
+
+    if($scope.bus.description == "광역셔틀") {
+      $scope.running = "계절학기 운행 안함";
+    } else if($scope.bus.busType == "sn") {
+      $scope.running = "정보 미수집";
+    } else if($scope.bus.busType == "si") {
+      $scope.running = "정보 미수집";
+    }
   });
   $scope.isBookmarked = Buses.isBookmarked($stateParams.busId);
+  $scope.running = "운행중인 버스 없음";
 
   $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
     $scope.modal = $ionicModal;
